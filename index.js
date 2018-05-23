@@ -9,7 +9,7 @@ function startServer(argv) {
         console.log("-v or --version [show version]")
         console.log("-s or --start [start a static server on current dir]")
     } else if (argv[0] === "-v" || argv[0] === "--version") {
-        console.log("v1.0.0")
+        console.log("v1.0.2")
     } else if (argv[0] === "-s" || argv[0] === "start") {
         const app = express()
         app.use("/", express.static(path)) // ? 想要配置第二个参数
