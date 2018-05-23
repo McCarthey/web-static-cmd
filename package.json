@@ -1,0 +1,22 @@
+{
+  "name": "web-static-cmd",
+  "version": "1.0.0",
+  "description": "A command line tool which starts a static server for testing front-end web page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/McCarthey/web-static-cmd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/McCarthey/web-static-cmd/issues"
+  },
+  "homepage": "https://github.com/McCarthey/web-static-cmd#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
