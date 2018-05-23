@@ -10,6 +10,7 @@ function startServer(argv) {
         console.log("usage:\n")
         console.log("-v or --version [show version]")
         console.log("-s or --start [start a static server on current dir]")
+        console.log("-s -p <path> <proxy url> [start a static server on current dir and set a proxy, such as 'sss -s -p /api http://www.example.com']")
     } else if (argv[0] === "-v" || argv[0] === "--version") {
         console.log("v1.0.2")
     } else if (argv[0] === "-s" || argv[0] === "start") {
