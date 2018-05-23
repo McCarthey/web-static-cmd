@@ -1,6 +1,6 @@
 {
   "name": "web-static-cmd",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A command line tool which starts a static server for testing front-end web page",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "dependencies": {
     "express": "^4.16.3"
   },
-  "bin":{
-    "sss":"./index.js"
+  "bin": {
+    "sss": "./index.js"
   }
 }
