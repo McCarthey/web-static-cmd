@@ -7,7 +7,7 @@ function startServer(argv) {
     if (argv[0] === "-h" || argv[0] === "--help") {
         console.log("usage:\n")
         console.log("-v or --version [show version]")
-        console.log("-s or --start [start a static server]")
+        console.log("-s or --start [start a static server on current dir]")
     } else if (argv[0] === "-v" || argv[0] === "--version") {
         console.log("v1.0.0")
     } else if (argv[0] === "-s" || argv[0] === "start") {
