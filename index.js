@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
 const express = require("express")
-const path = process.cwd()
+const path = require("path")
+const proxy = require("http-proxy-middleware")
+const curPath = process.cwd()
 
 function startServer(argv) {
     if (argv[0] === "-h" || argv[0] === "--help") {
@@ -12,7 +14,26 @@ function startServer(argv) {
         console.log("v1.0.2")
     } else if (argv[0] === "-s" || argv[0] === "start") {
         const app = express()
-        app.use("/", express.static(path)) // ? 想要配置第二个参数
+        app.use("/", express.static(curPath)) // ? 想要配置更多参数
+
+        // 代理配置（可选）
+        if (argv[1] === "-p" || argv[1] === "--proxy") {
+            if (argv[2] && argv[3]) {
+                app.use(
+                    argv[2],
+                    proxy({
+                        target: argv[3],
+                        changeOrigin: true
+                    })
+                )
+            } else {
+                console.log(
+                    "Please input your proxy mapTable[such as /api https://www.example.com]"
+                )
+                return false
+            }
+        }
+
         app.listen(8088, () => {
             console.log(`A static server is running on http://localhost:8088`)
         })
