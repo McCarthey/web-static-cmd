@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/McCarthey/web-static-cmd.git"
   },
-  "author": "",
+  "author": "mccarthey",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/McCarthey/web-static-cmd/issues"
