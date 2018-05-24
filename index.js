@@ -12,7 +12,7 @@ function startServer(argv) {
         console.log("-v or --version [show version]")
         console.log("-s or --start [start a static server on current dir]")
         console.log(
-            "-s -p <path> <proxy url> [start a static server on current dir and set a proxy, such as 'sss -s -p /api http://www.example.com']"
+            "-s -p <path> <proxy url> <oldPath> <newPath> [start a static server on current dir and set a proxy, such as 'sss -s -p //api http://www.example.com' //oldpath //newpath]"
         )
     } else if (argv[0] === "-v" || argv[0] === "--version") {
         // 读取并输出package.json中的version
