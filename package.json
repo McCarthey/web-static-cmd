@@ -1,6 +1,6 @@
 {
   "name": "web-static-cmd",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A command line tool which starts a static server for testing front-end web page",
   "main": "index.js",
   "scripts": {
