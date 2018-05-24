@@ -14,10 +14,15 @@ You can use **-p** to set a proxy for your webapp
 
 for example:
 ```bash
-sss -s -p /api http://www.example.com
+sss -s -p //api http://www.example.com
 ```
 
 You can use **-h** to get help
 ```
 sss -h
+```
+
+Also, you can set **pathRewrite** option by inputing another 2 arguments after **-p**,like this:
+```
+sss -s -p //api http://www.example.com //api //
 ```
