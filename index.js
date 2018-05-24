@@ -35,8 +35,8 @@ function startServer(argv) {
             }
         }
 
-        app.listen(8088, () => {
-            console.log(`A static server is running on http://localhost:8088`)
+        app.listen(8099, () => {
+            console.log(`A static server is running on http://localhost:8099`)
         })
     } else {
         console.log('No such command.Please try "sss -h" to get help')
