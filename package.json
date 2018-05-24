@@ -17,10 +17,12 @@
   },
   "homepage": "https://github.com/McCarthey/web-static-cmd#readme",
   "dependencies": {
-    "express": "^4.16.3",
-    "http-proxy-middleware": "^0.18.0"
+    "express": "^4.16.3"
   },
   "bin": {
     "sss": "./index.js"
+  },
+  "devDependencies": {
+    "http-proxy-middleware": "^0.18.0"
   }
 }
