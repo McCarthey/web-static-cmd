@@ -1,6 +1,6 @@
 {
   "name": "web-static-cmd",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A command line tool which starts a static server for testing front-end web page",
   "main": "index.js",
   "scripts": {
@@ -17,12 +17,11 @@
   },
   "homepage": "https://github.com/McCarthey/web-static-cmd#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "http-proxy-middleware": "^0.18.0"
   },
   "bin": {
     "sss": "./index.js"
   },
-  "devDependencies": {
-    "http-proxy-middleware": "^0.18.0"
-  }
+  "devDependencies": {}
 }
