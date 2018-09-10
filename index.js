@@ -4,6 +4,7 @@ const express = require('express')
 const path = require('path')
 const proxy = require('http-proxy-middleware')
 const curPath = process.cwd()
+let page
 
 function startServer(argv) {
     // console.log('参数',argv)
@@ -27,9 +28,7 @@ function startServer(argv) {
         app.use('/', express.static(curPath)) // ? 想要配置更多参数
         // TODO:这样写不好 不过暂时先不改动了
         if (/\s*.html/.test(argv[1])) {
-            app.get('/', (req, res) => {
-                res.sendFile(htmlFile)
-            })
+            page = argv[1]
         }
         // 代理配置（可选）
         if (argv[1] === '-p' || argv[1] === '--proxy') {
@@ -53,7 +52,7 @@ function startServer(argv) {
         }
 
         app.listen(8099, () => {
-            console.log(`A static server is running on http://localhost:8099`)
+            console.log(`A static server is running on http://localhost:8099/${page}`)
         })
     } else {
         console.log('No such command.Please try "sss -h" to get help')
