@@ -1,20 +1,20 @@
 #!/usr/bin/env node
-const fs = require("fs")
-const express = require("express")
-const path = require("path")
-const proxy = require("http-proxy-middleware")
+const fs = require('fs')
+const express = require('express')
+const path = require('path')
+const proxy = require('http-proxy-middleware')
 const curPath = process.cwd()
 
 function startServer(argv) {
     // console.log('参数',argv)
-    if (argv[0] === "-h" || argv[0] === "--help") {
-        console.log("usage:\n")
-        console.log("-v or --version [show version]")
-        console.log("-s or --start [start a static server on current dir]")
+    if (argv[0] === '-h' || argv[0] === '--help') {
+        console.log('usage:\n')
+        console.log('-v or --version [show version]')
+        console.log('-s or --start [start a static server on current dir]')
         console.log(
             "-s -p <path> <proxy url> <oldPath> <newPath> [start a static server on current dir and set a proxy, such as 'sss -s -p //api http://www.example.com' //oldpath //newpath]"
         )
-    } else if (argv[0] === "-v" || argv[0] === "--version") {
+    } else if (argv[0] === '-v' || argv[0] === '--version') {
         // 读取并输出package.json中的version
         fs.readFile(`${__dirname}/package.json`, (err, data) => {
             if (err) {
@@ -22,28 +22,32 @@ function startServer(argv) {
             }
             console.log(`v${JSON.parse(data).version}`)
         })
-    } else if (argv[0] === "-s" || argv[0] === "start") {
+    } else if (argv[0] === '-s' || argv[0] === 'start') {
         const app = express()
-        app.use("/", express.static(curPath)) // ? 想要配置更多参数
+        app.use('/', express.static(curPath)) // ? 想要配置更多参数
+        // TODO:这样写不好 不过暂时先不改动了
+        if (/\s*.html/.test(argv[1])) {
+            app.get('/', (req, res) => {
+                res.sendFile(htmlFile)
+            })
+        }
         // 代理配置（可选）
-        if (argv[1] === "-p" || argv[1] === "--proxy") {
+        if (argv[1] === '-p' || argv[1] === '--proxy') {
             if (argv[2] && argv[3]) {
                 // 如果未传入后两个参数 则默认为'/'
-                argv[4] = argv[4] ? argv[4] : "/"
-                argv[5] = argv[5] ? argv[5] : "/"
+                argv[4] = argv[4] ? argv[4] : '/'
+                argv[5] = argv[5] ? argv[5] : '/'
                 app.use(
                     proxy(argv[2], {
                         target: argv[3],
                         changeOrigin: true,
                         pathRewrite: {
-                            ["^" + argv[4]]: argv[5]
+                            ['^' + argv[4]]: argv[5]
                         }
                     })
                 )
             } else {
-                console.log(
-                    "Please input your proxy mapTable[such as /api https://www.example.com]"
-                )
+                console.log('Please input your proxy mapTable[such as /api https://www.example.com]')
                 return false
             }
         }
