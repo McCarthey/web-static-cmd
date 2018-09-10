@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const fs = require('fs')
+const {exec} = require('child_process')
 const express = require('express')
 const path = require('path')
 const proxy = require('http-proxy-middleware')
@@ -54,6 +55,9 @@ function startServer(argv) {
         app.listen(8099, () => {
             console.log(`A static server is running on http://localhost:8099/${page}`)
         })
+        setTimeout(() => {
+            exec(`start http://localhost:8099/${page}`)
+        },500)
     } else {
         console.log('No such command.Please try "sss -h" to get help')
     }
